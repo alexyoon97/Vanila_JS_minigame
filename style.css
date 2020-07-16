@@ -1,0 +1,38 @@
+body{
+    background-color: dimgray;
+}
+#divBallGrid button{
+    border-radius: 5000%;
+    width: 50px;
+    height: 50px;
+}
+#overlay {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: red;
+    font-size: 180px;
+    margin: auto;
+    text-align: center;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+}
+.header{
+    text-align: center;
+    font-size: x-large;
+    background-color: #bbb;
+    padding: 20px;
+}
+#btnStart option{
+    background-color: yellow;
+}
+#divBallGrid table{
+    border: 1px dotted blue ;
+    margin: auto;
+}
