@@ -3,12 +3,16 @@ var num_matches=3,pick = null,arrBalls = [],score=0
 var colcount =0, rowcount =0; var undis = 0;
 var firstrow = 0, firstcol = 0;
 var score = 0, gameOver = 0;
+
 window.onload = function (){
     document.getElementById("drpMode").onchange = function(){
         num_matches = Number(document.getElementById("drpMode").value);
-        
     };
     document.getElementById("btnStart").onclick = function(){
+        
+        document.getElementsByClassName("hide")[0].style.display = "none";
+        document.getElementsByClassName("hide")[1].style.display = "none";
+
         score = 0;
         max_col = num_matches + 5;
         max_row = num_matches + 3;

@@ -3,8 +3,8 @@ body{
 }
 #divBallGrid button{
     border-radius: 5000%;
-    width: 50px;
-    height: 50px;
+    width: 6vh;
+    height: 6vh;
 }
 #overlay {
     position: fixed; /* Sit on top of the page content */
@@ -30,10 +30,9 @@ body{
     color: #ffc068;
 
 }
-
-.main{
+#main{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
     text-align: center;
     align-items: center;
@@ -47,7 +46,7 @@ body{
 }
 .text-content{
     margin: 5vh;
-    padding: 5vh;
+    padding: 4vh;
     border: #f7f1e3 solid;
     width: 500px;
 
