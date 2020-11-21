@@ -8,15 +8,32 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="header">Lab02-Ball-o-tron</div><br>
+    <div class="header">Ball-O-Tron</div><br>
     <div id="overlay"></div>
-    <div><button type="button" id="btnStart">Start Game</button>
-        <select id="drpMode">
-            <option value="4" selected>Easy</option>
-            <option value="5">Medium</option>
-            <option value="6">Hard</option>
-        </select>
+    <div class="main">
+        <div style="font-size: 20px;color: white;">
+            <div class="text-content">
+                Click and drop the ball and get a point by lining certain number of balls!<br>
+            You can select your level, it will increase the ball capacity and number of balls to score<br>
+            Choose your level from dropdown and click start button.<br><br>
+            </div>
+            <div class="text-content">
+                Easy = 3<br>
+                Medium = 5<br>
+                Hard = 6<br>   
+            </div>
+            <div class="text-content">
+                <button type="button" id="btnStart" style="margin-top: 20px;">Start Game</button>
+                <select id="drpMode">
+                    <option value="4" selected>Easy</option>
+                    <option value="5">Medium</option>
+                    <option value="6">Hard</option>
+                </select>
+            </div>
+            
+        </div>
+        <div id="divBallGrid"></div>
     </div>
-    <div id="divBallGrid"></div>
+    
 </body>
 </html>

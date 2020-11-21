@@ -1,4 +1,4 @@
-var max_row = 0,max_col=0,colors = ["red" , "orange","blue","black","pink"]
+var max_row = 0,max_col=0,colors = ["#32ff7e" , "#18dcff","#ff3838","#fffa65","#218c74"]
 var num_matches=3,pick = null,arrBalls = [],score=0
 var colcount =0, rowcount =0; var undis = 0;
 var firstrow = 0, firstcol = 0;

@@ -1,5 +1,5 @@
 body{
-    background-color: dimgray;
+    background-color: #cd84f1;
 }
 #divBallGrid button{
     border-radius: 5000%;
@@ -25,14 +25,30 @@ body{
 }
 .header{
     text-align: center;
-    font-size: x-large;
-    background-color: #bbb;
+    font-size: 8vh;
     padding: 20px;
+    color: #ffc068;
+
+}
+
+.main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    text-align: center;
+    align-items: center;V
 }
 #btnStart option{
     background-color: yellow;
 }
 #divBallGrid table{
-    border: 1px dotted blue ;
+    border: 10px solid #f7f1e3 ;
     margin: auto;
+}
+.text-content{
+    margin: 5vh;
+    padding: 5vh;
+    border: #f7f1e3 solid;
+    width: 500px;
+
 }
