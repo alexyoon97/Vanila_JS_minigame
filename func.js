@@ -24,25 +24,62 @@ window.onload = function (){
     };
     
 }
-
+function NewGame(){
+    for(var i = 0; i < max_row; i++){
+        arrBalls[i] = [];
+        for(var j = 0; j < max_col; j++){
+            arrBalls[i].push(new Cell(i,j));
+        }
+    }
+}
+function NewGrid(){
+    var content = "";
+    content += '<table>';
+    for(var i = 0; i<max_row;i++){
+        content += "<tr>";
+        for(var j = 0; j < max_col;j++){
+            content += "<td><button type='button' id='row" + i + 'col' + j + "'</button></td>";
+        }
+        content += "</tr>";
+    }
+    content += "</table>";
+    document.getElementById("divBallGrid").innerHTML = content;
+}
+function NextTurn(){
+    for(var i = 0; i < 3; i++){
+        var rancell = RandomCell();
+        if(rancell.display == true)
+            --i;
+        if(rancell.display !== true){
+            rancell.Color = Math.floor(Math.random() * colors.length);
+            rancell.display = true;
+        }
+    }
+}
+function RandomCell(){
+    var RanR = Math.floor(Number(Math.random() * max_row));
+    var RanC = Math.floor(Number(Math.random()* max_col));
+    return arrBalls[RanR][RanC];
+}
+function BindGrid(){
+    for(var i = 0; i<max_row;i++)
+        for(var j = 0 ;j<max_col;j++)
+            arrBalls[i][j].Bind();
+}
+function ShowGrid(){
+    for(var i = 0; i<max_row;i++)
+        for(var j = 0 ;j<max_col;j++){
+            arrBalls[i][j].Show();
+            if(arrBalls[i][j].display === false)
+                undis++;
+        }
+}
 function Cell(rows, cols){
     this.rows = rows;
     this.cols = cols;
     this.Color = -1;
     this.display = false;
     this.highlight = false;
-}
-
-Cell.prototype.Show = function(){
-    let Cellid = "row" + this.rows + "col" + this.cols;
-    document.getElementById(Cellid).style.borderWidth = "0px";
-    if(this.display === false){
-        document.getElementById(Cellid).style.backgroundColor = "gray";
-        return 1;
-    }
-    else{
-        document.getElementById(Cellid).style.backgroundColor = colors[this.Color];
-    }
 }
 Cell.prototype.Bind = function(){
     let cellid = "row"+this.rows + "col" + this.cols;
@@ -53,8 +90,6 @@ Cell.prototype.Bind = function(){
         if(pick===null && arrBalls[row][col].display===true){
             pick = arrBalls[row][col];
             document.getElementById(cellid).style.borderRadius = "0%";
-
-            
         }
         else if(pick !== null){
             if(arrBalls[row][col].display == true)
@@ -93,44 +128,20 @@ Cell.prototype.Bind = function(){
         ShowGrid();
     };
 }
+Cell.prototype.Show = function(){
+    let Cellid = "row" + this.rows + "col" + this.cols;
+    document.getElementById(Cellid).style.borderWidth = "0px";
+    if(this.display === false){
+        document.getElementById(Cellid).style.backgroundColor = "gray";
+        return 1;
+    }
+    else{
+        document.getElementById(Cellid).style.backgroundColor = colors[this.Color];
+    }
+}
 function show()
 {
     document.getElementById('overlay').style.display = "none";                  
-}
-function NewGame(){
-    for(var i = 0; i < max_row; i++){
-        arrBalls[i] = [];
-        for(var j = 0; j < max_col; j++){
-            arrBalls[i].push(new Cell(i,j));
-        }
-    }
-}
-function NewGrid(){
-    var content = "";
-    content += '<table>';
-    for(var i = 0; i<max_row;i++){
-        content += "<tr>";
-        for(var j = 0; j < max_col;j++){
-            content += "<td><button type='button' id='row" + i + 'col' + j + "'</button></td>";
-        }
-        content += "</tr>";
-    }
-    content += "</table>";
-    document.getElementById("divBallGrid").innerHTML = content;
-}
-function ShowGrid(){
-    for(var i = 0; i<max_row;i++)
-        for(var j = 0 ;j<max_col;j++){
-            arrBalls[i][j].Show();
-            if(arrBalls[i][j].display === false)
-                undis++;
-        }
-            
-}
-function BindGrid(){
-    for(var i = 0; i<max_row;i++)
-        for(var j = 0 ;j<max_col;j++)
-            arrBalls[i][j].Bind();
 }
 function Check(row, col){
     var sColor = arrBalls[row][col].Color;
@@ -158,12 +169,8 @@ function CheckR(row,col,sColor){
             break;
         }
         arrBalls[firstrow][col].highlight = true
-        
-        
         ++firstrow;
     }
-    
-        
 }
 function CheckC(row,col,sColor){
     while(col >0){
@@ -180,9 +187,6 @@ function CheckC(row,col,sColor){
             break;
         }
         arrBalls[row][firstcol].highlight = true
-        
-        
-            
         ++firstcol;
     }
 }
@@ -190,22 +194,6 @@ function ClearHighlight(){
     for(var i = 0; i<max_row;i++)
         for(var j = 0 ;j<max_col;j++)
             arrBalls[i][j].highlight = false;
-}
-function RandomCell(){
-    var RanR = Math.floor(Number(Math.random() * max_row));
-    var RanC = Math.floor(Number(Math.random()* max_col));
-    return arrBalls[RanR][RanC];
-}
-function NextTurn(){
-    for(var i = 0; i < 3; i++){
-        var rancell = RandomCell();
-        if(rancell.display == true)
-            --i;
-        if(rancell.display !== true){
-            rancell.Color = Math.floor(Math.random() * colors.length);
-            rancell.display = true;
-        }
-    }
 }
 function ClearCells(){
     for(var i = 0; i<max_row;i++)
@@ -217,23 +205,6 @@ function ClearCells(){
                 arrBalls[i][j].Show();
             }
         }
-            
-}
-
-function ShowScore(score, gameOver) {
-    
-    if (gameOver === 0)
-    {
-        document.getElementById('overlay').textContent = "Score: " + score;
-        document.getElementById('overlay').style.display = "block";
-        setTimeout(function () { show() }, 2000);
-    } 
-    else
-    {
-        let newline = "\r\n";
-        document.getElementById('overlay').textContent = "Game Over" + newline + "Score: " +score;
-        document.getElementById('overlay').style.display = "block";
-    }
 }
 function ShowScore(score, gameOver)
 {
